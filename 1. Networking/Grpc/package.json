@@ -1,0 +1,21 @@
+{
+  "name": "server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-server": "nodemon Server/server.js",
+    "start-client": "nodemon Client/client.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@grpc/proto-loader": "^0.7.13",
+    "body-parser": "^1.20.3",
+    "express": "^4.21.1",
+    "grpc": "^1.24.11",
+    "nodemon": "^3.1.7"
+  }
+}
