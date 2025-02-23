@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="preconnect" href="https://cdnjs.cloudflare.com" crossorigin>
+  <!-- <link rel="preconnect" href="https://fastly.picsum.photos" crossorigin> -->
+
+  <!-- <link rel="preconnect" href="https://picsum.photos"> -->
+  <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"> -->
+
+<link rel="preload" href="https://images.unsplash.com/photo-1734217673456-f93860a3fd23?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" as="image" crossorigin/>
+<link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="font" type="font/woff2" crossorigin="anonymous">
+
+<link rel="preload"  href="reset.css" as="style" type="text/css" onload="this.rel='stylesheet'">
+<link rel="stylesheet" href="style.css"/>
+</head>
+<body style="margin: 0; font-family: Arial, sans-serif;">
+
+  <!-- Header -->
+  <header style="background-color: #4CAF50; color: white; padding: 15px; text-align: center;">
+    <h1 style="margin: 0;">Welcome to the Inline CSS Demo</h1>
+  </header>
+
+  <!-- Main Content -->
+  <main style="padding: 20px;">
+
+    <!-- Section 1 -->
+    <section style="margin-bottom: 20px; text-align: center;">
+      <h2 style="color: #333;">About This Page</h2>
+      <p style="line-height: 1.6; color: #555;">
+        This page demonstrates inline CSS and the use of images from a CDN to create a visually appealing layout.
+      </p>
+      <!-- CDN Image -->
+      <img 
+        src="https://via.placeholder.com/300x200.png?text=Sample+Image" 
+        alt="Sample Image"
+        style="max-width: 100%; border: 2px solid #4CAF50; border-radius: 8px; margin-top: 10px;">
+    </section>
+
+    <!-- Section 2 -->
+    <section style="margin-bottom: 20px;">
+      <h2 style="color: #333; text-align: center;">Benefits of Inline CSS</h2>
+      <ul style="padding-left: 20px; color: #555;">
+        <li>Quick and easy for small changes</li>
+        <li>No need for an external stylesheet</li>
+        <li>Overrides other styles</li>
+      </ul>
+    </section>
+
+    <!-- Section 3 with CDN Image -->
+    <section style="text-align: center;">
+      <h2 style="color: #333;">A Beautiful View</h2>
+      <!-- CDN Image -->
+      <img 
+        src="https://picsum.photos/600/300" 
+        alt="Random Landscape"
+        style="max-width: 100%; border: 2px solid #333; border-radius: 8px; margin-top: 10px;">
+      <p style="color: #555; margin-top: 10px;">This is a random image fetched from Picsum Photos CDN.</p>
+    </section>
+    <section style="text-align: center;">
+      <h2 style="color: #333;">A Beautiful View</h2>
+      <!-- CDN Image -->
+      <img 
+        src="https://picsum.photos/600/301" 
+        alt="Random Landscape"
+        style="max-width: 100%; border: 2px solid #333; border-radius: 8px; margin-top: 10px;">
+      <p style="color: #555; margin-top: 10px;">This is a random image fetched from Picsum Photos CDN.</p>
+    </section>    <section style="text-align: center;">
+      <h2 style="color: #333;">A Beautiful View</h2>
+      <!-- CDN Image -->
+      <img 
+        src="https://picsum.photos/600/302" 
+        alt="Random Landscape"
+        style="max-width: 100%; border: 2px solid #333; border-radius: 8px; margin-top: 10px;">
+      <p style="color: #555; margin-top: 10px;">This is a random image fetched from Picsum Photos CDN.</p>
+    </section>    <section style="text-align: center;">
+      <h2 style="color: #333;">A Beautiful View</h2>
+      <!-- CDN Image -->
+      <img 
+        src="https://images.unsplash.com/photo-1734217673456-f93860a3fd23?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+        alt="Random Landscape"
+        style="max-width: 100%; border: 2px solid #333; border-radius: 8px; margin-top: 10px;">
+      <p style="color: #555; margin-top: 10px;">This is a random image fetched from Picsum Photos CDN.</p>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer style="background-color: #333; color: white; text-align: center; padding: 10px;">
+    <p style="margin: 0;">&copy; 2024 Inline CSS Demo. All Rights Reserved.</p>
+  </footer>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" ></script>
+</body>
+</html>

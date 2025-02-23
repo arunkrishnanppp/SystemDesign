@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+
+    setTimeout(()=>{
+      document.getElementById('loader').style.display='none'
+      document.getElementById('main-content').style.display='block'
+
+    },3000)
+  </script>
+<style>
+.loader{
+  color: green;
+}
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+#main-content{
+  width: 500px;
+  padding: 10px;
+  border: 1px solid black;
+  color: red;
+}
+
+</style>
+</head>
+<body>
+
+  <div class="content">
+
+    <div class="loader" id="loader">Loading..</div>
+    <div style="display:none" id="main-content">
+    <h1>Content Loaded</h1> 
+    <p>lorem ipsum dolor sit amet, consectetur adip Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi vero aperiam incidunt, similique veritatis beatae ipsa placeat. Eveniet magnam hic cum vero aut, quo tempore sit laboriosam, incidunt iste consequuntur.</p>  
+ </div>
+  </div>
+  
+
+</body>
+</html>

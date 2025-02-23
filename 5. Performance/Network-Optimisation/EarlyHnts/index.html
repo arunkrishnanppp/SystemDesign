@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CDN Images Example</title>
+    <style>
+      .ImageGrid{
+        display: grid;
+
+        grid-template-columns: 1fr 4fr;
+      }
+      img{
+        width: 200px;
+        object-fit: contain;
+      }
+    </style>
+</head>
+<body>
+  <div class="ImageGrid">
+    <!-- <div><img src="https://images.unsplash.com/photo-1428606381429-22224991fb0c" alt="Image 1"></div>
+<div><img src="https://images.unsplash.com/photo-1427830574887-32e5702033b0" alt="Image 2"></div>
+<div><img src="https://images.unsplash.com/photo-1427830228531-ccf2652188b7" alt="Image 3"></div>
+<div><img src="https://images.unsplash.com/photo-1427830180740-12146c79a1a3" alt="Image 4"></div>
+<div><img src="https://images.unsplash.com/photo-1429042007245-890c9e2603af" alt="Image 5"></div>
+<div><img src="https://images.unsplash.com/photo-1443402041265-fe79bb6b1651" alt="Image 6"></div>
+<div><img src="https://images.unsplash.com/photo-1415226181422-279a51ca056e" alt="Image 7"></div>
+<div><img src="https://images.unsplash.com/photo-1450885413713-176921f199b2" alt="Image 8"></div>
+<div><img src="https://images.unsplash.com/photo-1449825457024-24da8ff1e863" alt="Image 9"></div>
+<div><img src="https://images.unsplash.com/photo-1450052184212-d6fffa60af0a" alt="Image 10"></div>
+<div><img src="https://images.unsplash.com/photo-1435734038652-f1e24a6fd1f6" alt="Image 11"></div>
+<div><img src="https://images.unsplash.com/photo-1446772203672-3fd066e514f0" alt="Image 12"></div>
+<div><img src="https://images.unsplash.com/photo-1446769826264-5cbbaf7aa895" alt="Image 13"></div>
+<div><img src="https://images.unsplash.com/photo-1439684717901-bbeeade9a9f2" alt="Image 14"></div>
+<div><img src="https://images.unsplash.com/photo-1432674134753-a15e24aa45c8" alt="Image 15"></div> -->
+<!-- <div><img src="https://images.unsplash.com/photo-1453219614128-96ef43ecf28a" alt="Image 16"></div>
+<div><img src="https://images.unsplash.com/photo-1424274414501-ce96d567b5c5" alt="Image 17"></div>
+<div><img src="https://images.unsplash.com/photo-1431982363733-e617f2c1b0ba" alt="Image 18"></div>
+<div><img src="https://images.unsplash.com/photo-1452188387547-e330b12b977c" alt="Image 19"></div>
+<div><img src="https://images.unsplash.com/photo-1432287217746-2a014a175993" alt="Image 20"></div>
+<div><img src="https://images.unsplash.com/photo-1459972416347-6fe25903032a" alt="Image 21"></div>
+<div><img src="https://images.unsplash.com/photo-1452111472347-fdd7541ef136" alt="Image 22"></div>
+<div><img src="https://images.unsplash.com/photo-1452111380487-b84c8895e191" alt="Image 23"></div>
+<div><img src="https://images.unsplash.com/photo-1426449589530-028b3a5a6d8a" alt="Image 24"></div>
+<div><img src="https://images.unsplash.com/photo-1449329083577-af97dec7413d" alt="Image 25"></div>
+<div><img src="https://images.unsplash.com/photo-1456611984355-c05be968ebe9" alt="Image 26"></div>
+<div><img src="https://images.unsplash.com/photo-1458682625221-3a45f8a844c7" alt="Image 27"></div>
+<div><img src="https://images.unsplash.com/photo-1428606715050-6bb5e6eeb4a1" alt="Image 28"></div>
+<div><img src="https://images.unsplash.com/photo-1457059953563-0569784392c9" alt="Image 29"></div>
+<div><img src="https://images.unsplash.com/photo-1428366890462-dd4baecf492b" alt="Image 30"></div>
+<div><img src="https://images.unsplash.com/photo-1428677361686-f9d23be145c9" alt="Image 31"></div>
+<div><img src="https://images.unsplash.com/photo-1428765048792-aa4bdde46fea" alt="Image 32"></div>
+<div><img src="https://images.unsplash.com/photo-1428953773181-b4cf23cd7195" alt="Image 33"></div>
+<div><img src="https://images.unsplash.com/photo-1428976343495-f2c66e701b2b" alt="Image 34"></div>
+<div><img src="https://images.unsplash.com/photo-1428976365951-b70e0fa5c551" alt="Image 35"></div>
+<div><img src="https://images.unsplash.com/photo-1429041966141-44d228a42775" alt="Image 36"></div>
+<div><img src="https://images.unsplash.com/photo-1430760814266-9c81759e5e55" alt="Image 37"></div>
+<div><img src="https://images.unsplash.com/photo-1431184052543-809fa8cc9bd6" alt="Image 38"></div>
+<div><img src="https://images.unsplash.com/photo-1424746219973-8fe3bd07d8e3" alt="Image 39"></div>
+<div><img src="https://images.unsplash.com/photo-1429547584745-d8bec594c82e" alt="Image 40"></div>
+<div><img src="https://images.unsplash.com/photo-1430598825529-927d770c194f" alt="Image 41"></div>
+<div><img src="https://images.unsplash.com/photo-1433256392503-913cee5877e3" alt="Image 42"></div>
+<div><img src="https://images.unsplash.com/photo-1433650552684-d4004a945d6c" alt="Image 43"></div>
+<div><img src="https://images.unsplash.com/photo-1434828927397-62ea053f7a35" alt="Image 44"></div>
+<div><img src="https://images.unsplash.com/photo-1435459025078-9857f8933bc9" alt="Image 45"></div>
+<div><img src="https://images.unsplash.com/photo-1438480478735-3234e63615bb" alt="Image 46"></div>
+<div><img src="https://images.unsplash.com/photo-1436397543931-01c4a5162bdb" alt="Image 47"></div>
+<div><img src="https://images.unsplash.com/photo-1436874555419-bb64221c5c1d" alt="Image 48"></div>
+<div><img src="https://images.unsplash.com/photo-1439396087961-98bc12c21176" alt="Image 49"></div>
+<div><img src="https://images.unsplash.com/photo-1431538510849-b719825bf08b" alt="Image 50"></div>
+<div><img src="https://images.unsplash.com/photo-1434873740857-1bc5653afda8" alt="Image 51"></div>
+<div><img src="https://images.unsplash.com/photo-1441126270775-739547c8680c" alt="Image 52"></div>
+<div><img src="https://images.unsplash.com/photo-1442406964439-e46ab8eff7c4" alt="Image 53"></div>
+<div><img src="https://images.unsplash.com/photo-1441966055611-30ea468880a2" alt="Image 54"></div>
+ -->
+ <div><img src="./img1.jpeg" alt="Image 1"></div>
+ <div><img src="./img2.jpeg" alt="Image 2"></div>
+ <div><img src="./img3.jpeg" alt="Image 3"></div>
+ <div><img src="./img4.jpeg" alt="Image 4"></div>
+ <div><img src="./img5.jpeg" alt="Image 5"></div>
+ <div><img src="./img6.jpeg" alt="Image 6"></div>
+ <div><img src="./img7.jpeg" alt="Image 7"></div>
+ <div><img src="./img8.jpeg" alt="Image 8"></div>
+ <div><img src="./img9.jpeg" alt="Image 9"></div>
+ <div><img src="./img10.jpeg" alt="Image 10"></div>
+ <div><img src="./img11.jpeg" alt="Image 11"></div>
+ <div><img src="./img12.jpeg" alt="Image 12"></div>
+ <div><img src="./img13.jpeg" alt="Image 13"></div>
+  </div>
+</body>
+</html>

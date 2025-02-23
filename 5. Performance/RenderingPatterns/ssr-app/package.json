@@ -1,0 +1,31 @@
+{
+  "name": "ssr-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "ssr": "npx webpack && nodemon server/index.js",
+    "parseJsx": "npx babel client/App.js --out-file dist/App.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/preset-env": "^7.26.0",
+    "@babel/register": "^7.25.9",
+    "babel-loader": "^9.2.1",
+    "express": "^4.21.2",
+    "ignore-styles": "^5.0.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "webpack": "^5.97.1",
+    "webpack-cli": "^6.0.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.26.4",
+    "@babel/core": "^7.26.0",
+    "@babel/preset-react": "^7.26.3",
+    "css-loader": "^7.1.2",
+    "style-loader": "^4.0.0"
+  }
+}

@@ -1,0 +1,15 @@
+.loader{
+  color: green;
+}
+.content{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+#main-content{
+  width: 500px;
+  padding: 10px;
+  border: 1px solid black;
+  color: red;
+}

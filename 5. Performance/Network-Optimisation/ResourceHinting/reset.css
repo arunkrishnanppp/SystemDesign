@@ -1,0 +1,11 @@
+/* reset.css */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+main {
+  font-family: Arial, sans-serif;
+  background-color: rgb(154, 49, 49);
+}
