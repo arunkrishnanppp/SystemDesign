@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href='./chat.css'/>
+</head>
+<body>
+  
+  <div id="chat-container">
+  <div class="chat-person chat-person-1">
+    <header>
+      Person 1
+    </header>
+    <div id="chat-content-P1" class="chat-content"></div>
+
+<div class="chat-input-container">
+  <input placeholder="Enter message"  id ='chat-input-P1' class="chat-input" />
+  <button onclick="sendMessage('P1')" class="chat-send">Send</button>
+
+</div>
+ 
+  </div>
+
+
+  <div class="chat-person chat-person-2">
+    <header>
+      Person 2
+    </header>
+    <div id="chat-content-P2" class="chat-content"></div>
+    <div class="chat-input-container">
+      <input placeholder="Enter message"  id ='chat-input-P2' class="chat-input" />
+      <button onclick="sendMessage('P2')" class="chat-send">Send</button>
+    
+    </div>
+     
+  </div>
+    
+  
+  </div>
+
+  <script src="./pollingchat.js"></script>
+</body>
+</html>

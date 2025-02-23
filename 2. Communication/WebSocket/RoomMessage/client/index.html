@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #message-container {
+      height: 80vh;
+      border: 1px solid black;
+
+    }
+    #message-container div {
+
+   background-color: rgb(172, 172, 172);
+   height: 30px;
+   padding: 10px;
+   display: flex;
+align-items: center;
+font-size: 2em;
+
+    }
+    #form{
+      margin-top: 20px;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      
+
+    }
+    .form-container{
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .form-container>input{
+      flex: 5;
+      box-sizing: border-box;
+    }
+    .form-container>label{
+      flex: 1;
+      box-sizing: border-box;
+    align-content: center;
+    }
+    .form-container>button{
+      box-sizing: border-box;
+      /* border: none; */
+      width: 50px;
+      height: 50px;
+      border-radius: 100%;
+    }
+  </style>
+   <script src="https://cdn.socket.io/4.8.0/socket.io.min.js"></script>
+</head>
+<body>
+  <div id="message-container">
+
+   
+  </div>
+  <form id="form">
+    <div class="form-container">
+      <label for="message-input">Message</label>
+      <input type="text" id="message-input" placeholder="Enter message">
+      <button type="submit" id="send-button">Send</button>
+  </div>
+  <div class="form-container">
+    <label for="room-input">Room</label>
+    <input type="text" id="room-input" placeholder="Enter Room">
+    <button type="button" id="room-button">Join Room</button>
+  </div>
+  </form>
+
+  <script src="http://localhost:4000/index.js"></script>
+</body>
+</html>

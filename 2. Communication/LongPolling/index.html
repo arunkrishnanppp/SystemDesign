@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Long Polling Example</title>
+</head>
+<body>
+  <h1>Long Polling Example</h1>
+  <p id="response"></p>
+
+
+
+  <script>
+    const delay = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
+    const field=document.getElementById("response");
+    const longPollingFunction=async(shouldPoll,prevData=null)=>{ 
+      if(!shouldPoll) return;
+      try{
+        const res= await fetch(`http://localhost:3000/data?lastData=${prevData}`);
+      const response=await res.text();
+      field.innerText=response;
+
+      await delay(1000) // Small delay in between next call to avoid overwhelming the server
+      longPollingFunction(shouldPoll,response)
+      }catch(err){
+        console.log("Error happended while polling",err);
+        await delay(2000) 
+        longPollingFunction(shouldPoll,prevData)
+     
+      }
+    
+    }
+    let shouldPoll = true;
+    longPollingFunction(shouldPoll,null)
+
+ setTimeout(() => {
+  shouldPoll = false;
+}, 60000); 
+  </script>
+</body>
+</html>

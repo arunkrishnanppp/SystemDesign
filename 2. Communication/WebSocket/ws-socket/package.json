@@ -1,0 +1,19 @@
+{
+  "name": "ws-socket",
+  "version": "1.0.0",
+  "description": "",
+  "main": "ws-server.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server": "nodemon ws-server.js",
+    "client": "nodemon client-server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7",
+    "ws": "^8.18.0"
+  }
+}

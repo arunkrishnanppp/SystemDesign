@@ -1,0 +1,15 @@
+body{
+  background-color: azure;
+}
+
+.button-div{
+  padding:20px
+}
+
+.error{
+  color: red;
+}
+
+.info{
+  color: blue
+}
