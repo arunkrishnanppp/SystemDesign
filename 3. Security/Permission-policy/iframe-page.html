@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+ <h3>Same Origin Iframe</h3>
+
+ <div>
+  <ul>
+    <li>Latitude: <span id="lat"></span></li>
+    <li>Longitude:  <span id="long"></span></li>
+  </ul>
+ </div>
+  
+
+  <script>
+
+    const GeoLocation=navigator.geolocation;
+
+    GeoLocation.getCurrentPosition((res)=>{
+      console.log('Got geo Location in iframe', res);
+      document.getElementById('lat').innerText=res.coords.latitude
+      document.getElementById('long').innerText=res.coords.longitude
+
+    },(err)=>{
+      console.log('Got Error while accessing  Location in iframe', err);
+    })
+
+  </script>
+</body>
+</html>

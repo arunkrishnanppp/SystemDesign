@@ -1,0 +1,20 @@
+{
+  "name": "iframe-protection",
+  "version": "1.0.0",
+  "main": "index.js",
+
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-hacker": "cd hackersWebsites && nodemon index.js",
+    "start-iframe": "cd iframewebsites && nodemon index.js"
+
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "express": "^4.21.1",
+    "nodemon": "^3.1.7"
+  }
+}

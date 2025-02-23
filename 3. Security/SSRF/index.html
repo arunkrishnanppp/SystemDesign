@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+
+  <h1>SSRF</h1>
+
+  <script>
+    document.onload = function(){
+
+      const searchParams=new URLSearchParams(window.location.search);
+      console.log(searchParams)
+
+      console.log(searchParams.get('imgUrl'))
+      /*Lets say if we are making an API call to our server by sending url in query ,
+      server take the URL and directly hit the url to get the data , this can lead to leek sentivet information
+
+      preventation 
+
+      const url=req.query.url;
+      if(!isValidUrl(url)){
+      return res.status(400).send("Invalid Url");
+      }
+
+
+
+      */
+      
+
+    }()
+  </script>
+</body>
+</html>

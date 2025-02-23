@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      font-size: 24px;
+    }
+  </style>
+  <body>
+    <h1>Original Iframe Website 1</h1>
+  
+    <p>Legitimate Site</p>
+    <button onclick="window.alert('Payement done')">Click</button>
+  
+
+    <script>
+      console.log(window.parent.location)
+      window.onload = function(){
+        const parentWindow=window.parent;
+        console.log(parentWindow)
+
+        window.alert('hello am from iframe')
+
+        console.log(window.top)
+        // console.log(window.top.document)
+        console.log(window.self.document)
+        // const parentDom=parentWindow.document
+
+        // alert("Stolen Data"+ parentDom.innerHTML)
+      }
+    </script>
+    
+  </body>
+</html>
