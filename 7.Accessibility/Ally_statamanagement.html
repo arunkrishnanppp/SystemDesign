@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      /* position: fixed;
+    left: 50%;
+    top: 50%;
+      transform: translate(-50%,-50%); */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      text-align: center;
+    }
+    .hidden{
+      display: none;
+    }
+    .container{
+      width: 400px;
+    }
+    button,
+div[role="button"] {
+  color: #ffffff;
+  background-color: #006cc1;
+  font-size: 1rem;
+  max-width: 375px;
+  min-width: 120px;
+  padding: 9px 12px 10px;
+  border: solid 1px transparent;
+  line-height: 2;
+  text-align: center;
+  border-radius: 8px;
+  font-family: "Open Sans", sans-serif;
+  display: inline-block;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: relative;
+}
+    button:hover,
+div[role="button"]:hover {
+  background: #00579b;
+}
+  </style>
+</head>
+<body>
+  
+  <h1>Ally State Management</h1>
+  <h2>Component Level</h2> 
+  
+  <div class="container-component-level">
+    <button id="toggle" aria-expanded="false">
+      <span id="icon" class="toggle-plus">+</span>
+      <span class="details">Click to expand</span>
+    </button>
+    <div id="content" class="container hidden">
+      <h3>Check out this amazing offer!</h3>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sed mi rutrum, volutpat metus non, rutrum lorem. Nunc ut ornare metus. In gravida non quam a facilisis. Ut auctor orci a gravida semper. Donec eros ipsum, placerat lobortis tincidunt eget, fermentum feugiat sapien. Proin rhoncus commodo ex quis consequat.</p>
+    </div>
+  </div>
+  <script>
+    const toggleButton=document.getElementById("toggle");
+    const content=document.getElementById("content");
+
+   /* toggleButton.addEventListener('click', ()=>{
+      let classList=content.classList;
+      if(classList.contains('hidden')){
+        content.classList.remove('hidden');
+        toggleButton.setAttribute('aria-expanded', 'false');
+      }else{
+        content.classList.add('hidden')
+        toggleButton.setAttribute('aria-expanded', 'true');
+
+      }
+    })*/
+    toggleButton.addEventListener('click',(event)=>{
+      const target=event.currentTarget;
+      const icon=event.currentTarget.querySelector("#icon")
+      const detail=event.currentTarget.querySelector(".details")
+
+      if(toggleButton.getAttribute('aria-expanded')=="true"){
+        target.setAttribute("aria-expanded", "false");
+        content.classList.toggle('hidden')
+        console.log(icon);
+        icon.innerText="+"
+        detail.innerText="Click to expand"
+      }else{
+        target.setAttribute("aria-expanded", "true");
+        content.classList.toggle('hidden')
+         icon.innerText="-"
+         detail.innerText="Click to collaps"
+      }
+    })
+  </script>
+</body>
+</html>

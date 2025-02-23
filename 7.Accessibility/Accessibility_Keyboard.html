@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <header>
+    Accessibility Keyboard</header> 
+  <nav>
+
+
+  </nav>
+  <main>
+    <input type="text" id="accessibility-input"/>
+    <button>Click</button>
+    <!-- P tag is not keyboard accessible by default -->
+    <!-- <p >Focus goes here 4th</p>
+    <p >Focus goes here 2nd</p>
+    <p >Focus goes here 1st</p>
+    <p >Focus never goes here</p>
+    <p >Focus goes here 3rd</p>
+    <p >Focus goes here 5th</p> -->
+  
+
+    <h1>Focus order</h1>
+    <p tabindex="0">Focus goes here 4th</p>
+    <p tabindex="2">Focus goes here 2nd</p>
+    <p tabindex="1">Focus goes here 1st</p>
+    <p tabindex="-1">Focus never goes here</p>
+    <p tabindex="3">Focus goes here 3rd</p>
+    <p tabindex="0">Focus goes here 5th</p>
+</body>
+</html>

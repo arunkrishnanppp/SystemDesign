@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .visually-hidden{
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+
+  }
+</style>
+<body>
+  <h1>Image accessibility</h1>
+
+  <div>
+    <h2>Decorative images</h2>
+    <p>This images does not need t be recognized by AT</p>
+      <!-- This image will be skipped bny at since alt text is "" -->
+  <img src='sample _image.jpeg' width="200px" height="200px" alt="" >
+  <img src='sample _image.jpeg' width="200px" height="200px"role='presentation' >
+  <img src='sample _image.jpeg' width="200px" height="200px" role="none" >
+  <img src='sample _image.jpeg' width="200px" height="200px " aria-hidden="true">
+
+  </div>
+
+
+  <div>
+    <h2>Informative images</h2>
+    <p>This images should be recognized by AT</p>
+      <!-- This image will be skipped bny at since alt text is "" -->
+  <img src='sample _image.jpeg' width="200px" height="200px" alt="Sample Image" >
+  <img src='sample _image.jpeg' width="200px" height="200px" aria-label="Sample image by aria label" >
+  <div>
+    <span class="visually-hidden">This image info is comming from visually hidden element</span>
+    <img src='sample _image.jpeg' width="200px" height="200px"  >
+  </div>
+
+  <img src='sample _image.jpeg' width="200px" height="200px " aria-hidden="true">
+
+  </div>
+
+
+  <div>
+    <h2>Functinal images</h2>
+    <p>This images infor and actin should be recognized by AT</p>
+      <!-- This image will be skipped bny at since alt text is "" -->
+<a href="/"><img src='sample _image.jpeg' width="200px" height="200px " alt="home-image"></a>
+
+<a href="/" target="_blank"><span class="visually-hidden">Social bug network</span>
+  <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Ladybug_Logo.png" /></a>
+
+  <div title="Navigate to the homepage">
+    <a href="/">
+       <img src="https://upload.wikimedia.org/wikipedia/commons/e/ee/Ladybug_Logo.png" alt="Lovely Ladybugs for your Lawn"/>
+    </a>
+ </div>
+  </div>
+  <div>
+    <h2>Complex Immages images</h2>
+    <p>This images infor and actin should be recognized by AT</p>
+    
+    <div>
+  
+      <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Coccinellidae_%28Ladybug%29_Anatomy.svg" alt="Complex Image" aria-describedby="descriptin">
+      <span id="descriptin" class="visually-hidden" aria-hidden="true">This is a complexi image with lot of inforatin</span>
+    </div>
+
+        
+    <div>
+  <h3>Figure Image</h3>
+
+  <figure role="group">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/3/37/Coccinellidae_%28Ladybug%29_Anatomy.svg" alt="Short Description" >
+
+<figcaption>
+  <a href="ladybug-science.html">Learn more about the anatomy of a ladybug</a>
+</figcaption>
+  </figure>
+     
+    </div>
+  </div>
+
+</body>
+</html>

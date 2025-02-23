@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ARIA Live Region Example</title>
+</head>
+<style>
+ .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+</style>
+<body>
+  <div>
+    <label for="search">Search:</label>
+    <input type="text" id="search" placeholder="Type to search..." oninput="performSearch()">
+    <button onclick="performSearch()">Search</button>
+  </div>
+  <div 
+  role="region"
+    id="live-region" 
+    class="visually-hidden" 
+    aria-live="polite"
+    > Please search
+  </div>
+
+  <!-- Search results -->
+  <div id="results"></div>
+
+  <script>
+    const searchInput = document.querySelector('#search');
+    const result=document.querySelector('#results');
+    const liveRegion=document.querySelector('#live-region')
+    const mockResults = [
+        "Apple", "Banana", "Cherry", "Date", "Elderberry", "Fig", "Grape"
+      ];
+    function performSearch(){
+      console.log(searchInput.value);
+      const searchVal=searchInput.value;
+      const filteredResults = mockResults.filter(item =>
+        item.toLowerCase().includes(searchVal.toLowerCase())
+      );
+      result.innerHTML=filteredResults.length > 0 ? `
+      <ul>${filteredResults.map(res=>`<li>${res}</li>`)}</ul>`:'No Result fund'
+      console.log(liveRegion);
+      liveRegion.textContent = ""; // Clear the region
+setTimeout(() => {
+  liveRegion.textContent = `${filteredResults.length} result(s) found.`;
+}, 10); // 
+    }
+  </script>
+</body>
+</html>

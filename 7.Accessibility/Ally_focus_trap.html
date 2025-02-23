@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+
+  .model-overlay{
+    display: none;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index:100
+
+  }
+  .model-overlay.active{
+    display: block;
+  }
+  .model{
+    display: none;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform:translate(-50% ,-50%);
+    /* background-color:rgb(96, 71, 25); */
+    width: 300px;
+    height: 200px;
+    z-index:101;
+    border: 1px solid black;
+    border-radius: 10px;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  .model.active{
+    display: flex;
+  }
+  button:focus,input:focus{
+    outline: auto 1px red; 
+  }
+</style>
+<body>
+  
+  <button id="open-model">Open Model</button>
+
+  <div class="model-overlay" id="model-overlay">
+
+    <div class="model" id="model"> 
+      <div>
+        <label for="model-input" id="model-input-label">Enter Your Name </label>
+        <input type="text" name="model-input" aria-labelledby="model-input-label" placeholder="Enter name"/>
+      </div>
+     
+      <div class="model-button-group">
+        <button aria-label="First Action Button">Action</button>
+        <button aria-label="Second  Action Button">Action 2</button>
+        <button id="close-model" >Close Model</button>
+      </div>
+     
+    </div>
+  </div>
+
+  <script>
+    const openModel=document.getElementById("open-model");
+    const modelOverlay=document.getElementById("model-overlay");
+    const model=document.getElementById("model");
+    const closeModel=document.getElementById("close-model");
+    const focusableElements='button, input,textarea, [tabindex]:not([tabindex="-1"]),[href]'
+    let fistElement, lastElement;
+
+
+    openModel.onclick=function(){
+      modelOverlay.classList.add('active');
+      model.classList.add('active');
+     const elements= model.querySelectorAll(focusableElements);
+  console.log(elements);
+     fistElement=elements[0];
+     lastElement=elements[elements.length-1];
+     console.log(fistElement);
+     console.log(lastElement);
+     elements[0].focus()
+
+
+    }
+    function closeModelHandler(){
+      modelOverlay.classList.remove('active');
+      model.classList.remove('active');
+      openModel.focus()
+
+    }
+    function trapFocus(event) {
+      console.log(fistElement);
+      console.log(lastElement);
+      if(event.key=='Escape')   {
+        closeModelHandler()
+      }   
+      if(event.key=='Tab') {
+        //Only in tab we do focus shift
+        if(event.shiftKey){
+          //backword tab
+          if(document.activeElement==fistElement){
+            e.preventDefault();
+            lastElement.focus()
+          }
+
+
+        }else{
+          if(document.activeElement==lastElement){
+            e.preventDefault();
+            firstElement.focus()
+          }
+        }
+      }
+    }
+    //closing model
+    closeModel.onclick=closeModelHandler;
+    modelOverlay.addEventListener('click', closeModelHandler);
+
+    document.addEventListener('keydown', (e)=>{
+      if(model.classList.contains('active')){
+        trapFocus(e);
+      }
+    })
+
+  </script>
+</body>
+</html>
