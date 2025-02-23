@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box; /* To prevent padding and margin issues */
+}
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+
+
+/* Accordion css */
+.accordion{
+  width: 300px;
+}
+.accordion-header{
+  background-color: gray;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+}
+.header-toggle{
+  font-size: 2rem;
+}

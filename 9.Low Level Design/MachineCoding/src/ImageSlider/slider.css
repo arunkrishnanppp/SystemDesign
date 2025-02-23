@@ -1,0 +1,22 @@
+.image-slider{
+  position: relative;
+  display: flex;
+  justify-content: center;
+}
+.slider-button{
+  width: 100px;
+  position: relative;
+  background-color: white;
+  opacity: 0
+}
+.slider-button:hover{
+
+  opacity: .2
+}
+.slider-button.left{
+/* left: 0; */
+left: 100px;
+}
+.slider-button.right{
+  right: 100px;
+  }

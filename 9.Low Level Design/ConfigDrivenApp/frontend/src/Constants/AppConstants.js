@@ -1,0 +1,5 @@
+export const ELEMENT_TYPES = {
+  HEADER_COMPONENT: 'HEADER',
+  LOGO: 'LOGO',
+  NAVBAR: 'NAV_LINKS'
+};

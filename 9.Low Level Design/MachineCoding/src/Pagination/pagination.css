@@ -1,0 +1,22 @@
+.product-list{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+.product-list .product{
+  height:300px
+}
+
+.main{
+  position: relative;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.pagination{
+  display: flex;
+  gap: 30px;
+
+}

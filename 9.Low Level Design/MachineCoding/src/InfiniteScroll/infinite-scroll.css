@@ -1,0 +1,37 @@
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 80;
+  }
+  100% {
+    opacity: 100;
+  }
+}
+body { scroll-behavior: smooth;}
+.memes{
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: 50px;
+
+
+}
+.meme-card{
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  padding: 10px;
+  border: 1px solid black;
+  border-radius: 10px;
+  text-align: center;
+}
+.meme-card img,.img{
+  width: 150px;
+}
+.shimmer-card{
+  background-color: rgb(182, 181, 181);
+  animation: fadeInOut 2s ease-in-out
+}
