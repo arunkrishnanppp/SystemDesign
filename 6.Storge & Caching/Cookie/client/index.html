@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    body{
+      display: flex;
+      justify-content:center;
+      text-align: center
+    }
+  </style>
+</head>
+<body>
+  
+
+  <div>
+    <h1>Cookie Example</h1>
+    <label for="preference-selector">Choose your preference</label>
+    <select id="preference-selector" name="preference">
+      <option id="1" value="films">Films</option>
+      <option id="2" value="books">Books</option>
+      <option id="3" value="songs">Songs</option>
+
+    </select>
+    <button id="set-preference" ">Set preference</button>
+    <div>
+      <button onclick="getRecommendations()">Get recommendtion</button>
+    <ul id="recommendations"></ul>
+
+    </div>
+
+  </div>
+  <script src='./script.js'></script>
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>To-Do App</h1>
+  <form id="taskForm">
+    <input type="text" id="taskInput" placeholder="Add a new task" required />
+    <button type="submit">Add Task</button>
+  </form>
+  <ul id="taskList"></ul>
+  <button id="syncButton">Sync with Server</button>
+
+  <script>
+
+
+const dbName="todoDB";
+const storeName="tasks";
+
+async function openDB(){
+  return new Promise((resolve, reject)=>{
+    const connection=indexedDB.open(dbName, 1);
+
+    connection.addEventListener("upgradeneeded",(event)=>{
+      const db=event.target.result;
+      if(!db.objectStoreNames.contains(storeName)){
+        db.createObjectStore(storeName, {keyPath:"id"});
+      }
+    })
+    connection.addEventListener("success",(event)=>resolve(event.target.result))
+    connection.addEventListener("error",(event)=>resolve(event.target.result))
+
+  })
+}
+
+async function addTaskToDB(task) {
+      const db = await openDB();
+      const transaction = db.transaction(storeName, "readwrite");
+      transaction.objectStore(storeName).add(task);
+    }
+    async function getTasksFromDB() {
+      const db = await openDB();
+      const transaction = db.transaction(storeName, "readonly");
+      return new  Promise((resolve,reject)=>{
+        const request = transaction.objectStore(storeName).getAll();
+      request.onsuccess = () => resolve(request.result);
+      request.onerror = () => resolve(request.error);
+      })
+     
+    }
+    async function clearDB() {
+      const db = await openDB();
+      const transaction = db.transaction(storeName, "readwrite");
+      transaction.objectStore(storeName).clear();
+    }
+
+    const taskForm = document.getElementById("taskForm");
+    const taskInput = document.getElementById("taskInput");
+    const taskList = document.getElementById("taskList");
+    const syncButton = document.getElementById("syncButton");
+
+    function renderTasks(tasks) {
+      taskList.innerHTML = "";
+      tasks.forEach((task) => {
+        const li = document.createElement("li");
+        li.textContent = task.title;
+        taskList.appendChild(li);
+      });
+    }
+
+    taskForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const task = { id: Date.now(), title: taskInput.value };
+      await addTaskToDB(task);
+      const tasks = await getTasksFromDB();
+      renderTasks(tasks);
+      taskInput.value = "";
+    });
+    syncButton.addEventListener("click", async () => {
+      const localTasks = await getTasksFromDB();
+      const response = await fetch("http://localhost:3000/tasks/sync", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(localTasks),
+      });
+      const { tasks: serverTasks } = await response.json();
+      await clearDB();
+      serverTasks.forEach(addTaskToDB);
+      renderTasks(serverTasks);
+    });
+    window.addEventListener("DOMContentLoaded", async () => {
+      const tasks = await getTasksFromDB();
+      renderTasks(tasks);
+    });
+  </script>
+</body>
+</html>

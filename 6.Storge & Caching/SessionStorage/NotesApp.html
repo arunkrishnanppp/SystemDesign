@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  body{
+    display: flex;
+    justify-content:center;
+    align-items:center
+  }
+.note-list-contaner{
+  margin-top: 10px;
+  border: 1px solid;
+  height: 500px;
+  width: 400px;
+  overflow-y: scroll;
+}
+.note-item{
+  display: flex;
+  justify-content: space-between;
+}
+</style>
+<body>
+  
+  <div > 
+
+    <div>
+      <input id="note-input"/> <button id="add-note">Add Note</button>
+
+
+    </div>
+<div class="note-list-contaner">
+  <ul id="note-list">
+
+  </ul>
+
+
+</div>
+  </div>
+  <script>
+    const inputEl=document.getElementById('note-input');
+    const addNote=document.getElementById('add-note');
+    const noteList=document.getElementById('note-list');
+
+    const notesFromSession=sessionStorage.getItem('notes');
+    let notes=[];
+    if(notesFromSession!=null){
+      notes=JSON.parse(notesFromSession);
+    }
+    const removeNotehandler=(event)=>{
+    console.log("removeNotehandler", event.target.id);
+     const index= notes.findIndex(n=>n.id==event.target.id)
+      notes.splice(index,1)
+ 
+      sessionStorage.setItem('notes', JSON.stringify(notes));
+      document.getElementById(`note-${event.target.id}`).remove()
+    }
+    const renderNotes=()=>{
+      noteList.innerHTML='';
+      sessionStorage.setItem('notes', JSON.stringify(notes));
+      console.log(notes);
+
+      notes.forEach((note, index)=>{
+        const noteEle=document.createElement('li');
+      const p=document.createElement('p');
+      p.innerText=note.text;
+      const removeNote=document.createElement('button');
+      removeNote.setAttribute('id', note.id)
+      removeNote.innerText="Remove Note"
+      noteEle.appendChild(p); 
+      noteEle.appendChild(removeNote); 
+      noteEle.setAttribute('id', `note-${note.id}`);
+      noteList.appendChild(noteEle)
+      noteEle.classList.add('note-item')
+      removeNote.addEventListener('click',(event)=>{
+        removeNotehandler(event)
+      })
+
+
+      })
+    
+    }
+    renderNotes()
+    addNote.addEventListener('click',()=>{
+  
+      console.log("button clicked");
+    const inputval=inputEl.value.trim();
+    console.log(inputval);
+    if(inputval!=''){
+      const newNote={
+        id: notes.length+1,
+        text: inputval
+      }
+      notes.push(newNote);
+      renderNotes()
+    }  
+    })
+  </script>
+</body>
+</html>
